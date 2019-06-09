@@ -56,7 +56,7 @@ public class Frame extends JFrame implements MouseListener {
 		}
 
 		g.drawString("ADD", fieldSize * 18, yOffset + 2 * fieldSize);
-		g.drawString("SHOW", fieldSize * 18, yOffset + 3 * fieldSize);
+		g.drawString("DELETE", fieldSize * 18, yOffset + 3 * fieldSize);
 		g.drawString("EDIT", fieldSize * 18, yOffset + 4 * fieldSize);
 		g.drawString("RESET", fieldSize * 18, yOffset + 5 * fieldSize);
 		g.drawString("EXPORT", fieldSize * 18, yOffset + 16 * fieldSize);
@@ -109,6 +109,9 @@ public class Frame extends JFrame implements MouseListener {
 						JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, stateTitles.toArray(), 0);
 				if (c != JOptionPane.CLOSED_OPTION) {
 					state = stateList.get(c);
+					stateTitles.remove(c);
+					stateList.remove(c);
+					repaint();
 				}
 			} else if (e.getY() < yOffset + 5 * fieldSize) {
 				System.out.println("reset");
@@ -212,6 +215,7 @@ public class Frame extends JFrame implements MouseListener {
 				state[x][y] = false;
 			}
 		}
+		repaint();
 	}
 
 	// UNUSED
