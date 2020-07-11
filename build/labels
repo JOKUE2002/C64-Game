@@ -1,0 +1,2 @@
+clear	= $c00e
+init_screen	= $c006	; ?
