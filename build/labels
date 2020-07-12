@@ -1,2 +1,9 @@
-clear	= $c00e
-init_screen	= $c006	; ?
+clear	= $c017
+draw_test	= $c037	; ?
+copy_charset	= $c0b2
+change_charset	= $c0a3	; ?
+init_text	= $c092	; ?
+loop_text	= $c096
+line2	= $c06a	; unused
+line1	= $c042	; unused
+init_screen	= $c00f	; ?

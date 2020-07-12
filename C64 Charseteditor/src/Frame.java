@@ -14,10 +14,10 @@ public class Frame extends JFrame implements MouseListener {
 
 	int fieldSize = 20;
 	int yOffset = 20;
-	int w = fieldSize * 18 + 3 * fieldSize;
-	int h = fieldSize * 18 + yOffset;
+	int w = fieldSize * 10 + 3 * fieldSize;
+	int h = fieldSize * 10 + yOffset;
 
-	boolean[][] state = new boolean[16][16];
+	boolean[][] state = new boolean[8][8];
 
 	ArrayList<boolean[][]> stateList = new ArrayList<>();
 	ArrayList<String> stateTitles = new ArrayList<>();
@@ -47,23 +47,23 @@ public class Frame extends JFrame implements MouseListener {
 		g.fillRect(0, 0, w, h);
 
 		g.setColor(Color.white);
-		for (int i = 1; i < 18; i++) {
-			g.drawLine(fieldSize, fieldSize * i + yOffset, fieldSize * 17, fieldSize * i + yOffset);
+		for (int i = 1; i < 10; i++) {
+			g.drawLine(fieldSize, fieldSize * i + yOffset, fieldSize * 9, fieldSize * i + yOffset);
 		}
 
-		for (int i = 1; i < 18; i++) {
-			g.drawLine(fieldSize * i, fieldSize + yOffset, fieldSize * i, fieldSize * 17 + yOffset);
+		for (int i = 1; i < 10; i++) {
+			g.drawLine(fieldSize * i, fieldSize + yOffset, fieldSize * i, fieldSize * 9 + yOffset);
 		}
 
-		g.drawString("ADD", fieldSize * 18, yOffset + 2 * fieldSize);
-		g.drawString("DELETE", fieldSize * 18, yOffset + 3 * fieldSize);
-		g.drawString("EDIT", fieldSize * 18, yOffset + 4 * fieldSize);
-		g.drawString("RESET", fieldSize * 18, yOffset + 5 * fieldSize);
-		g.drawString("EXPORT", fieldSize * 18, yOffset + 16 * fieldSize);
+		g.drawString("ADD", fieldSize * 10, yOffset + 2 * fieldSize);
+		g.drawString("DELETE", fieldSize * 10, yOffset + 3 * fieldSize);
+		g.drawString("EDIT", fieldSize * 10, yOffset + 4 * fieldSize);
+		g.drawString("RESET", fieldSize * 10, yOffset + 5 * fieldSize);
+		g.drawString("EXPORT", fieldSize * 10, yOffset + 8 * fieldSize);
 
 		g.setColor(Color.YELLOW);
-		for (int x = 0; x < 16; x++) {
-			for (int y = 0; y < 16; y++) {
+		for (int x = 0; x < 8; x++) {
+			for (int y = 0; y < 8; y++) {
 				if (state[x][y]) {
 					g.fillRect(x * fieldSize + fieldSize, y * fieldSize + fieldSize + yOffset, fieldSize, fieldSize);
 				}
@@ -73,7 +73,7 @@ public class Frame extends JFrame implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (e.getX() < 17 * fieldSize) {
+		if (e.getX() < 9 * fieldSize) {
 			int fieldX = (e.getX()) / fieldSize - 1;
 			int fieldY = (e.getY() - yOffset) / fieldSize - 1;
 
@@ -117,7 +117,7 @@ public class Frame extends JFrame implements MouseListener {
 				System.out.println("reset");
 				resetState();
 				stateList.clear();
-			} else if (e.getY() < yOffset + 17 * fieldSize && e.getY() > yOffset + 15 * fieldSize) {
+			} else if (e.getY() < yOffset + 9 * fieldSize && e.getY() > yOffset + 15 * fieldSize) {
 				System.out.println("export");
 
 				JFileChooser jfc = new JFileChooser(System.getProperty("user.dir"));
